@@ -64,7 +64,7 @@ I learned how to use esquisse to make simple plots using esquisse and apply diff
 # the data is adjusted.  What adjustment is needed?
 
 #adjust cyl as a factor so that esquisse can read it 
-cyl_adjusted<- as.factor(cyl)
+cyl_adjusted<- as.factor(mtcars_mpg2$cyl)
 
 #group two data frames with same number of rows into a single data frame
 mtcars_mpg2 <-cbind(mtcars_mpg2, cyl_adjusted)
