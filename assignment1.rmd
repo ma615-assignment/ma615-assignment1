@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Assignment1"
 author: "MA_615"
 date: "9/23/2021"
 output:
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r}
-
+#load the data
 library(tidyverse)
 
 # call built-in data mtcars.
@@ -26,6 +26,10 @@ mtcars_mpg2 <- mtcars[mtcars$mpg < 20,]
 # Reduce the variables to mpg, cyl, disp, hp, gears
 mtcars_mpg2 <- mtcars_mpg2[, c(1,2,3,4,10)]
 
+```
+I learned how read the data that I need from a big dataset, and reduce variables to create a new dataset which is more simple and easy to read.
+
+```{r}
 # read the R file hand_functions.R so that it can be used
 # notice that with echo = TRUE 
 source(file = "hand_functions.R", echo = TRUE)
@@ -34,39 +38,48 @@ source(file = "hand_functions.R", echo = TRUE)
 
 sp_out <- sum_special(mtcars_mpg2)
 
+#using the function to calculate the summary statistics of the data frame
+```
+I learned that we can use formula that was save in a file to do computation which will save a lot of time. And that also means that we do not need to do a long calculation in our rmd file to find a function that fit into our analysis, which make our rmd more concise. In addition, if we need to use a formula repeatedly, a function file that is ready to use will be really helpful.
+```{r}
 
 library(esquisse)
 
-# graph the ggplot in esquisse as same as needed, and then copy the code from esquisse and inserted to my script here.
-
 #esquisser(data = mtcars_mpg2, viewer = "browser")
 
-?library(ggplot2)
+
+# graph the ggplot in esquisse as same as needed
+#then copy the code from esquisse and insert to my script here.
 
 ggplot(mtcars_mpg2) +
   aes(x = disp, y = mpg) +
   geom_point(shape = "bullet", size = 4L, colour = "#B22222") +
   geom_smooth(span = 0.5) +
   theme_minimal()
+```
+I learned how to use esquisse to make simple plots using esquisse and apply different features or limitation to the plots.
 
-
-
+```{r}
 # note that this boxplot cannot be made with esquisse() unless
 # the data is adjusted.  What adjustment is needed?
 
+#adjust cyl as a factor so that esquisse can read it 
+cyl_adjusted<- as.factor(cyl)
 
-ggplot(mtcars_mpg2, aes(x=as.factor(cyl), y=mpg)) +
-  geom_boxplot(fill="slateblue", alpha=0.2)+
-  xlab("cyl")
+#group two data frames with same number of rows into a single data frame
+mtcars_mpg2 <-cbind(mtcars_mpg2, cyl_adjusted)
+
+#draw the plot in esquisse
+#esquisser(data = mtcars_mpg2, viewer = "browser")
 
 
-
-
-
-
+ggplot(mtcars_mpg2) +
+ aes(x = cyl_adjusted, y = mpg) +
+ geom_boxplot(shape = "circle", fill = "#625ACD", alpha=0.2) +
+ theme_minimal()
 
 
 
 ```
-
+I learned how to adjust my data frame when esquisse can read my data frame as a factor. And also learned how to combine two data frames with same length of rows into a single data frame.
 
