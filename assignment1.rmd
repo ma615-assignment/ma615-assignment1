@@ -3,8 +3,8 @@ title: "Assignment1"
 author: "MA_615"
 date: "9/23/2021"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -57,6 +57,7 @@ ggplot(mtcars_mpg2) +
   geom_smooth(span = 0.5) +
   theme_minimal()
 ```
+
 I learned how to use esquisse to make simple plots using esquisse and apply different features or limitation to the plots.
 
 ```{r}
@@ -81,5 +82,6 @@ ggplot(mtcars_mpg2) +
 
 
 ```
+
 I learned how to adjust my data frame when esquisse can read my data frame as a factor. And also learned how to combine two data frames with same length of rows into a single data frame.
 
